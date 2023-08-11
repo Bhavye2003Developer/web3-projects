@@ -1,0 +1,28 @@
+{% include './base.html' %}
+{% block content %}
+<h1>Create Your Account</h1>
+
+<div class="container">
+    <div class="transfer" style="margin: 30px;">
+        <form method="post" id="transferForm">
+            {% csrf_token %}
+            <label for="username">username</label><br>
+            <input type="text" name="username" id="username" placeholder="Enter your username"><br>
+            <label for="message">Message</label><br>
+            <input type="text" name="message" id="message"
+                placeholder="Enter your message to create private key. REMEMBER THIS MESSAGE AS IT WILL HELP YOU RECOVER YOUR PRIVATE KEY"><br>
+            <input type="submit" value="CREATE">
+        </form>
+        {% if isUserCreated %}
+        <br><br>
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Well done!</h4>
+            <p>Your account has been created successfully. Your private key is {{ privateKey }}</p>
+            <p>Your public key is {{ publicKey }}</p>
+            <hr>
+            <p class="mb-0">You can use this private key to login to your account.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

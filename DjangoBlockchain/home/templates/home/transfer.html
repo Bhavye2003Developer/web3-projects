@@ -1,0 +1,17 @@
+{% include './base.html' %}
+{% block content %}
+<h1>Welcome to ArtiChain - Your Blockchain Artistry Platform</h1>
+
+<div class="container">
+    <div class="transfer" style="margin: 30px;">
+        <form action="/" method="post" id="transferForm">
+            {% csrf_token %}
+            <label for="amount">Transfer Amount</label><br>
+            <input type="text" name="amount" id="amount" placeholder="Enter the amount"><br>
+            <label for="recpAddress">Recipent's Address</label><br>
+            <input type="text" name="recpAddress" id="recpAddress" placeholder="Enter the recipent's public key"><br>
+            <input type="submit" value="Transfer">
+        </form>
+    </div>
+</div>
+{% endblock %}

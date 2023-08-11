@@ -1,0 +1,28 @@
+{% include './base.html' %}
+{% block content %}
+
+{% comment %} <div class="container">
+    <div class="transfer" style="margin: 30px;">
+        <form method="post" id="transferForm" action="{% url 'validate' senderID %}">
+            {% csrf_token %}
+            <input type="submit" value="VALIDATE TRANSACTION">
+        </form>
+    </div>
+</div> {% endcomment %}
+
+{% if isValidated %}
+<h1>Your transaction has been validated</h1><br>
+{% else %}
+<h1>Please validate your transaction for further processing...</h1>
+<div class="container">
+    <div class="transfer" style="margin: 30px;">
+        <form method="post" id="transferForm" action="{% url 'validate' senderID %}">
+            {% csrf_token %}
+            <input type="submit" value="VALIDATE TRANSACTION">
+        </form>
+    </div>
+</div>
+<p>Your transaction has not been validated yet...</p><br>
+{% endif %}
+
+{% endblock %}
